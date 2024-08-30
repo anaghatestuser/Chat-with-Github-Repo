@@ -56,7 +56,7 @@ def generate_response(prompt):
     Generate a response using OpenAI's ChatCompletion API and the specified prompt.
     """
     completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo", messages=[{"role": "user", "content": prompt}]
+        model="gpt-4o", messages=[{"role": "user", "content": prompt}]
     )
     response = completion.choices[0].message.content
     return response
@@ -78,7 +78,7 @@ def search_db(db, query):
     retriever.search_kwargs["maximal_marginal_relevance"] = True
     retriever.search_kwargs["k"] = 10
     # Create a ChatOpenAI model instance
-    model = ChatOpenAI(model="gpt-3.5-turbo")
+    model = ChatOpenAI(model="gpt-4o")
     # Create a RetrievalQA instance from the model and retriever
     qa = RetrievalQA.from_llm(model, retriever=retriever)
     # Return the result of the query
